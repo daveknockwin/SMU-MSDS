@@ -1,0 +1,155 @@
+---
+title: "Live Session Unit 3 Assignment"
+author: "David Nguyen"
+date: "September 18, 2018"
+output: html_document
+---
+
+#1. GitHub Cloning
+
+Code used to clone the GitHub repository to my local machine using Git Bash:
+
+David@DESKTOP-97U2R5B MINGW64 ~  
+$ pwd #print working directory  
+/c/Users/David
+
+David@DESKTOP-97U2R5B MINGW64 ~  
+$ cd /c/Users/David/Documents/GitHub #create new directory
+
+David@DESKTOP-97U2R5B MINGW64 ~/Documents/GitHub  
+$ git clone https://github.com/awesomedata/awesome-public-datasets.git #clone the repository to the new directory  
+Cloning into 'awesome-public-datasets'...  
+remote: Counting objects: 1484, done.  
+remote: Total 1484 (delta 0), reused 0 (delta 0), pack-reused 1484  
+Receiving objects: 100% (1484/1484), 565.76 KiB | 349.00 KiB/s, done.  
+Resolving deltas: 100% (866/866), done.
+
+#2. Data Summary
+
+```{r, echo=TRUE}
+#a. Code to read and assign the Titanic data:
+
+df <- read.csv(file="titanic.csv", header=TRUE, sep=",") #read and assign the Titanic data in R
+
+#b. Output and bar graph for the number of females and males aboard the Titanic:
+
+table(df$Sex) #number of males and females
+
+barplot(table(df$Sex), xlab="Gender", ylab="Number of People", main="Number of Females and Males on the Titanic") #bar graph for the number of females and males on the titanic
+
+#c. Output of the means of age, fare, and survival:
+
+apply(df[,c("Age", "Fare", "Survived")], 2, mean, na.rm=TRUE) #mean of age, fare, and survived
+```
+
+#3. Function Building
+
+```{r, echo=TRUE}
+#a. Objects for the median age, the minimum and maximum Duration of sleep, and the mean and standard deviation of the Rosenberg Self Esteem scale (RSES):
+
+sleepfunction <- function(x) {
+  sleep <- read.csv(file="sleep_data_01.csv", header=TRUE, sep=",") #read and assign the Sleep data in R
+  medianage <- median(sleep[,"Age"], na.rm=TRUE) #median age of sleep data
+  minduration <- min(sleep[,"Duration"], na.rm=TRUE) #min duration of sleep
+  maxduration <- max(sleep[,"Duration"], na.rm=TRUE) #max duration of sleep
+  meanrses <- mean(sleep[,"RSES"], na.rm=TRUE) #mean of the RSES
+  sdrses <- sd(sleep[,"RSES"], na.rm=TRUE) #standard deviation of the RSES
+  
+#b. Data frame object consisting of the median age, the RSES mean and standard deviation respectively divided by five, and the range of duration:
+
+  meanrses5 <- meanrses/5 #mean of rses divided by 5
+  sdrses5 <- sdrses/5 #standard deviation of rses divided by 5
+  rangeduration2numbers <- range(sleep[,"Duration"], na.rm=TRUE) #range duration of sleep
+  rangeduration <- rangeduration2numbers[2] - rangeduration2numbers[1] #range duration of sleep as one number
+  report <- data.frame(medianage, meanrses5, sdrses5, rangeduration) #data frame with the previous objects
+  
+#c. Change column names:
+  
+  colnames(report) <- c("MedianAge", "SelfEsteem", "SE_SD", "DurationRange") #new column names
+  report #variable of the report
+  
+#d. Rounding of the report:
+  
+  finalreport <-round(report, digits = 2) #round to 2 digits
+  finalreport #variable of the final report
+  print(finalreport) #print final report
+  }
+
+#e. Run the function:
+
+sleepfunction(sleep)
+```
+
+#4. FiveThirtyEight Data
+
+```{r, echo=TRUE}
+#a. Install the fivethirtyeight package:
+
+#I did this in the console using:
+#install.packages("fivethirtyeight")
+
+#b. Assign the 22nd data set:
+
+library(fivethirtyeight)
+
+fivethirtyeightpackage <- data(package = "fivethirtyeight")
+
+df <- as.data.frame(get(fivethirtyeightpackage$results[22,"Item"]))
+
+#can aslo be done with:
+#df <- fivethirtyeight::college_recent_grads
+
+#c. The URL link is:
+
+vignette("fivethirtyeight", package = "fivethirtyeight") #more detailed list of the data sets
+
+#http://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/
+
+#d. The Dimensions and column names:
+
+dim(df) #dimensions of college_recent_grads
+
+colnames(df) #column names of college_recent_grads
+```
+
+#5. Data Summary:
+
+```{r, echo=TRUE}
+#a. Column names and number of columns:
+
+colnames(df) #column names
+
+length(colnames(df)) #number of columns
+
+#b. Count of each unique major category:
+
+major_count <- table(df$major_category) #count of each major category
+
+#c. Plot of major count:
+
+par(las=2) #makes text perpendicular to the axis
+barplot( major_count, horiz = TRUE, main = "Number of Students per Major", xlab = "Number of Students",ylab="Major", col=c("Red") ) #barplot of major count
+
+#d. Write the fivethirtyeight data to a csv file:
+
+write.table( major_count, file = "fivethirtyeight.csv", row.names = FALSE, sep=",", col.names = c("major_category", "freq")) #writes data as csc file
+```
+
+#6.The Codebook:
+a. New Repo on GitHub:
+
+I started a new repository on GitHub.
+
+b. README.md file:
+
+I created a README.md file which details my repo.
+
+c. Nested directories:
+
+I created nested directories.
+
+d. Link to this GitHub:
+
+Here is the link to this GitHub:
+
+https://github.com/daveknockwin/SMU-MSDS
