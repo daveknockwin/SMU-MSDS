@@ -1,0 +1,56 @@
+---
+title: 'MSDS 6306: Live Session Unit 2 Assignment'
+author: "David Nguyen"
+date: "September 11, 2018"
+output: html_document
+---
+
+#1a. What is a basic workflow for reproducible research?
+1. Data gathering
+2. Data analysis
+3. Results presentation
+
+#1b. What are five practical tips for making research reproducible?
+1. Document everything.
+2. Save everything as a text file.
+3. Make all files human readable.
+4. Tie all your files together.
+5. Create a plan to organize, store, and make your files available.
+
+#1c. Give an example of how you might implement each tip.
+1. Record R session info so others know what version of R you worked in.
+2. Put data in .csv files, analysis in .R files, and basis for presentatons in .md or .tex files to allow for the best dissmeination of information.
+3. Comment on all your code using the hast tag symbol (#) in R so that others can understand what you did.
+4. Document the relationship between files by using commands to instruct the computer program.
+5. Make the files modular so that it is easier to find errors.
+
+#1d. Which one of these do you think will be the most difficult?
+I believe that the 5th tip, tie all your files together, will be the most difficult to implement because you have to make sure that the commands you created to link the files together are correct.
+
+#2a. As described in the "TODO Assignment 2: Question 2a" comment, complete the plot function regarding monthly temperature.
+```{r, echo=TRUE}
+Month <- airquality$Month #this is the Month variable
+Temperature <- airquality$Temp #this is the Temperature variable
+plot(x=Month, y=Temperature, main="Temperature by Month") #this is the scatter plot of Temperature by Month
+```
+
+#2b. As described in the "TODO Assignment 2: Question 2b" comment, complete the plot function involving ozone.
+```{r, echo=TRUE}
+Temperature <- airquality$Temp #this is the Temperature variable
+Ozone <- airquality$Ozone #this is the Ozone variable
+plot(x=Temperature, y=Ozone, main="Temperature vs Ozone") #this is the scatter plot of Temperature vs. Ozone
+```
+
+#3a. As described in the "TODO Assignment 2: Question 3a" comment, complete a plot function for Temperature and Pressure.
+```{r, echo=TRUE}
+Pressure <- pressure$pressure #this is the Pressure variable
+Temperature <- pressure$temperature #this is the Temperature variable
+plot(x=Pressure, y=Temperature, main="Temperature vs Pressure") #this is the scatter plot of Temperature vs. Pressure
+```
+
+#3b. As described in the "TODO Assignment 2: Question 3b" comment, complete a similar plot function that reverses the two axes.
+```{r test, echo=TRUE}
+Pressure <- pressure$pressure #this is the Pressure variable
+Temperature <- pressure$temperature #this is the Temperature variable
+plot(y=Pressure, x=Temperature, main="Pressure vs Temperature") #this is the scatter plot of Pressure vs. Temperature
+```
