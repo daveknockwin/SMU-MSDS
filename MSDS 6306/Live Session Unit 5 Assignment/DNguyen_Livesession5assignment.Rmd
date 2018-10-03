@@ -60,7 +60,7 @@ b. Display the last ten rows in the dataframe.  Describe something you find inte
 tail(y2015, 10)
 ```
 
-*One intersting thing about the last 10 rows is that anll the names are boy names that start with a "Z" and there are exactly 5 boys with each name.*
+*One interesting thing about the last 10 rows is that all the names are boy names that start with a "Z" and there are exactly 5 boys with each name.*
 
 c. Merge y2016 and y2015 by your Name column; assign it to final.  The client only cares about names that have data for both 2016 and 2015; there should be no NA values in either of your amount of children rows after merging.
 
