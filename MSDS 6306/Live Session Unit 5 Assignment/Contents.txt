@@ -1,0 +1,10 @@
+MSDS6306 Live Session Unit 5 Assignment Contents
+
+This folder contains the following files:
+
+Codebook.txt
+DNguyen_Livesession5assignment.html
+DNguyen_Livesession5assignment.rmd
+toptengirlnames.csv
+yob2015.txt
+yob2016.txt
