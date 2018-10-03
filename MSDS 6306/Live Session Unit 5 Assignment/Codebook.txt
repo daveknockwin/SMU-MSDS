@@ -2,8 +2,8 @@ MSDS6306 Live Session Unit 5 Assignment Codebook
 
 The following objects are from the "DNguyen_Livesession5assignment.rmd" file:
 
-df		Contains the initial data from the "yob2016.txt" file.
-y2016		Contains the fixed data (removal of the mispelled named) from df.
-y2015		Contains the initial data from the "yob2015.txt" file.
-final		Contains the merged data of y2016 and y2015 with an added "Total" coloumn.
-toptengirlnames	Contains the 10 most popular girl names from final.
+df			Contains the initial data from the "yob2016.txt" file.
+y2016			Contains the fixed data (removal of the mispelled named) from df.
+y2015			Contains the initial data from the "yob2015.txt" file.
+final			Contains the merged data of y2016 and y2015 with an added "Total" coloumn.
+toptengirlnames		Contains the 10 most popular girl names from final.
